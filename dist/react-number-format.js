@@ -251,7 +251,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	      if (thousandSeparator === true) {
-	        thousandSeparator = ',';
+	        thousandSeparator = '.';
 	      }
 
 	      return {
@@ -532,7 +532,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          thousandSeparator = _getSeparators4.thousandSeparator,
 	          decimalSeparator = _getSeparators4.decimalSeparator;
 
-	      var hasDecimalSeparator = numStr.indexOf('.') !== -1 || decimalScale && fixedDecimalScale;
+	      var hasDecimalSeparator = numStr.indexOf(',') !== -1 || decimalScale && fixedDecimalScale;
 
 	      var _splitDecimal = (0, _utils.splitDecimal)(numStr, allowNegative),
 	          beforeDecimal = _splitDecimal.beforeDecimal,

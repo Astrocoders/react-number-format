@@ -172,7 +172,7 @@ class NumberFormat extends React.Component {
     let {thousandSeparator} = this.props;
 
     if (thousandSeparator === true) {
-      thousandSeparator = ','
+      thousandSeparator = '.'
     }
 
     return {
@@ -414,7 +414,7 @@ class NumberFormat extends React.Component {
     const {decimalScale, fixedDecimalScale, prefix, suffix, allowNegative} = this.props;
     const {thousandSeparator, decimalSeparator} = this.getSeparators();
 
-    const hasDecimalSeparator = numStr.indexOf('.') !== -1 || (decimalScale && fixedDecimalScale);
+    const hasDecimalSeparator = numStr.indexOf(',') !== -1 || (decimalScale && fixedDecimalScale);
     let {beforeDecimal, afterDecimal, addNegation} = splitDecimal(numStr, allowNegative); // eslint-disable-line prefer-const
 
     //apply decimal precision if its defined
