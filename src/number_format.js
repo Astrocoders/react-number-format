@@ -46,6 +46,7 @@ const propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   type: PropTypes.oneOf(['text', 'tel']),
+  maxLength: PropTypes.string,
   isAllowed: PropTypes.func,
   renderText: PropTypes.func,
   getInputRef: PropTypes.func
@@ -53,13 +54,14 @@ const propTypes = {
 
 const defaultProps = {
   displayType: 'input',
-  decimalSeparator: '.',
+  decimalSeparator: ',',
   fixedDecimalScale: false,
   prefix: '',
   suffix: '',
-  allowNegative: true,
+  allowNegative: false,
   isNumericString: false,
   type: 'text',
+  maxLength: '',
   onValueChange: noop,
   onChange: noop,
   onKeyDown: noop,
@@ -145,10 +147,10 @@ class NumberFormat extends React.Component {
     const hasNegation = num[0] === '-';
     if(hasNegation) num = num.replace('-', '');
 
-    num  = (num.match(numRegex) || []).join('').replace(decimalSeparator, '.');
+    num  = (num.match(numRegex) || []).join('').replace(decimalSeparator, ',');
 
     //remove extra decimals
-    const firstDecimalIndex = num.indexOf('.');
+    const firstDecimalIndex = num.indexOf(',');
 
     if (firstDecimalIndex !== -1) {
       num = `${num.substring(0, firstDecimalIndex)}.${num.substring(firstDecimalIndex + 1, num.length).replace(new RegExp(escapeRegExp(decimalSeparator), 'g'), '')}`
